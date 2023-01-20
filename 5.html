@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>虚空宁宓的个人网站</title>
+    <style>
+      
+      textarea {
+        width: 250px;
+        height: 200px;
+        border: 1px solid pink;
+        outline: none;
+        resize: none;
+        margin-top: 50px;
+        text-align: center;
+        font-size: 30px;
+        background-color: aqua;
+        border: 10px solid yellow;
+        border-style: outset;
+      }
+
+      ul {
+        margin-top: 50px;
+      }
+
+      li {
+        width: 250px;
+        padding: 5px;
+        background-color: black;
+        color: white;
+        font-size: 14px;
+        margin: 15px 0;
+      }
+
+      li a {
+        float: right;
+      }
+      body {
+        background-image: url(https://tse2-mm.cn.bing.net/th/id/OIP-C.Xfr_esABEjroLJJI5iuxmQHaDP?w=320&h=153&c=7&r=0&o=5&pid=1.7);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .a{
+        background-color: black;
+        border: 10px solid yellow;
+        border-style: inset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+        height: 314111px;
+        margin-top: 30px;
+      }
+      button{
+        margin-top: 30px;
+        width: 100px;
+        height: 50px;
+        background-color: aqua;
+        font-size: larger;
+        font-weight: bolder;
+        border: 10px solid yellow;
+        border-style: outset;
+      }
+      .b{
+        width: 350px;
+        height: 150px;
+        background-color: blue;
+        border: 10px solid yellow;
+        border-style: inset;
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="b"><p>留言板</p><p>(请文明用语)</p></div>
+    <div class="a">
+    <textarea>说些什么吧！</textarea>
+    <button>发布</button>
+    <ul></ul>
+    <script>
+      // 点击发布，会把文本域中的内容发布到ul中
+      // 点击删除，会删除留言
+      // 1.获取事件源 文本域 按钮 文本域
+      var text = document.querySelector("textarea");
+      var btn = document.querySelector("button");
+      var ul = document.querySelector("ul");
+      // 2.注册点击事件
+      btn.onclick = function () {
+        // 首先会创建一个li 并把文本域的内容给li 再把li添加到ul中
+        var li = document.createElement("li");
+        if (text.value == "") {
+          alert("您没有输入内容");
+        } else {
+          // 文本域的值 value
+          // 增加一个删除留言的按钮
+          li.innerHTML =
+            text.value +
+            '<a href="javascript:;" rel="external nofollow" rel="external nofollow" >删除</a>';
+          ul.insertBefore(li, ul.children[0]); // 把最新的发布放到最前面
+          // ul.appendChild(li);
+
+          // 3.注册删除点击事件
+          var removeBtn = document.querySelectorAll("a");
+          for (var i = 0; i < removeBtn.length; i++) {
+            removeBtn[i].onclick = function () {
+              ul.removeChild(this.parentNode);
+            };
+          }
+        }
+      };
+    </script>
+    </div>
+  </body>
+</html>
