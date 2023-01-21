@@ -46,7 +46,6 @@
         justify-content: center;
       }
       .a{
-        background-color: black;
         border: 10px solid yellow;
         border-style: inset;
         display: flex;
@@ -55,6 +54,7 @@
         width: 350px;
         height: 314111px;
         margin-top: 30px;
+        background-image: linear-gradient(black,red,yellow,blue,);
       }
       button{
         margin-top: 30px;
@@ -75,7 +75,20 @@
         text-align: center;
         font-size: 30px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-image: linear-gradient(red,yellow,blue);
       }
+      a:link {
+        color: white;
+      } /* 未访问链接*/
+      a:visited {
+        color: darkorange;
+      } /* 已访问链接 */
+      a:hover {
+        color: blue;
+      } /* 鼠标移动到链接上 */
+      a:active {
+        color: red;
+      } /* 鼠标点击时 */
     </style>
   </head>
   <body>

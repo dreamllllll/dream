@@ -20,7 +20,21 @@
         font-weight: bolder;
         border: 5px solid yellow;
         border-style: inset;
+        background-color: red; /* 浏览器不支持时显示 */
+        background-image: linear-gradient(red,yellow);
       }
+      a:link {
+        color: white;
+      } /* 未访问链接*/
+      a:visited {
+        color: darkorange;
+      } /* 已访问链接 */
+      a:hover {
+        color: blue;
+      } /* 鼠标移动到链接上 */
+      a:active {
+        color: red;
+      } /* 鼠标点击时 */
     </style>
   </head>
 
