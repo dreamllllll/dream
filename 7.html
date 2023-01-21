@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>当前要事</title>
+    <meta
+      name="description"
+      content="记录和提醒当前最重要的事，可以设置为浏览器起始页tab"
+    />
+    
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url(https://tse4-mm.cn.bing.net/th/id/OIP-C.t5W9_ue2uF4si-Cz2a0zTgHaEZ?w=285&h=180&c=7&r=0&o=5&pid=1.7)
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #shuRuKuang {
+        border: 0;
+        border-bottom: 2px solid blue;
+        padding: 4px 2px;
+        display: block;
+        background: 0;
+        line-height: 1.5;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s ease-in-out;
+        border-radius: 0;
+        color: blue;
+        font-size: 2rem;
+        max-width: 90%;
+      }
+
+      #anNiu {
+        margin-left: -50px;
+        margin-right: 10px;
+        color: blue;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      input::placeholder {
+        color: blue;
+      }
+      input::-webkit-input-placeholder {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <input placeholder="最重要的事？" id="shuRuKuang" />
+      <span id="anNiu" onclick="change()">✔</span>
+    </div>
+    <script>
+      let youShi = false;
+
+      function change() {
+        let anNiu = document.getElementById("anNiu");
+        let shuRuKuang = document.getElementById("shuRuKuang");
+
+        if (youShi) {
+          youShi = false;
+          anNiu.innerText = "✔";
+          shuRuKuang.style.borderBottomColor = "#fff";
+          shuRuKuang.value = "";
+          shuRuKuang.readOnly = false;
+          window.localStorage.removeItem("shi");
+        } else {
+          youShi = true;
+          anNiu.innerText = "✘";
+          shuRuKuang.style.borderBottomColor = "transparent";
+          shuRuKuang.readOnly = true;
+          window.localStorage.setItem("shi", shuRuKuang.value);
+        }
+      }
+      let data = window.localStorage.getItem("shi");
+      if (data) {
+        document.getElementById("shuRuKuang").value = data;
+        change();
+      }
+    </script>
+  </body>
+</html>
